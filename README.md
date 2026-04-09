@@ -1,7 +1,3 @@
-# ###########################################################
-# PLEASE NOTE:  workflow.yaml in root to copy
-# ###########################################################
-
 # sa-hackers-organized
 
 This app is a Vue.js-based clone of [Hacker News](https://hn.ycombinator.com).
