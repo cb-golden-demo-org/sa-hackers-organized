@@ -6,6 +6,8 @@ on:
     branches:
       - "**"
   workflow_dispatch:
+  schedule:
+    - cron: 0 7 * * 1,4
 permissions:
   scm-token-own: read
   scm-token-org: read
@@ -171,7 +173,7 @@ jobs:
             | MINOR_COUNT          | ${{ steps.FetchSonarQubeIssues.outputs.MINOR_COUNT }} |
           format: MARKDOWN
   deploy:
-    environment: "sa-hackers-organized-prod"
+    environment: sa-hackers-organized-prod
     steps:
       - name: Checkout
         uses: cloudbees-io/checkout@v1
@@ -207,7 +209,7 @@ jobs:
         uses: https://github.com/cloudbees-io/register-deployed-artifact@v2
         with:
           artifact-id: ${{ needs.build-container-image.outputs.artifact-id }}
-          target-environment: "sa-hackers-organized-prod"
+          target-environment: sa-hackers-organized-prod
     needs:
       - build-container-image
       - scan
